@@ -2,10 +2,10 @@ FLOOR(
     (TODAY() - Date_of_Birth__c) / 365.25
 )
 
-Checkbox:
-AND(
-    Paper_Publication__c >= 1,
-    Consultancy__c = TRUE
+IF(
+    (TODAY() - Date_of_Birth__c) / 365 >= 18,
+    TRUE,
+    FALSE
 )
 
 LEN(PAN_Number__c) <> 10
@@ -38,7 +38,7 @@ trigger StudentTrigger on Student__c (before insert, before update) {
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-
+Checkbox:
 AND(
     Paper_Publication__c >= 1,
     Consultancy__c = TRUE
